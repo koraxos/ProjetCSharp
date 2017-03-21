@@ -1,0 +1,83 @@
+CREATE TABLE [dbo].[Parent] (
+    [id_parent]  INT           Identity(1,1),
+    [Nom] VARCHAR (500) NOT NULL,
+    PRIMARY KEY (id_parent)
+);
+/**Enfant**/
+CREATE TABLE[dbo].[Enfant](
+	[id_enfant] INT Identity(1,1),
+	[nom] VARCHAR(500) NOT NULL,
+	PRIMARY KEY (id_enfant)
+);
+/** Parent-Enfant**/
+Create TABLE[dbo].[Parent_Enfant](
+	[id_parent] int FOREIGN KEY REFERENCES Parent(id_parent),
+	[id_enfant] int FOREIGN KEY REFERENCES Enfant(id_enfant),
+	PRIMARY KEY (id_parent,id_enfant)
+);
+/**Hist-Detail**/
+CREATE TABLE [Hist_Detail](
+	[id_hist_detail] Int Identity(1,1),
+	[niveau] varchar(200) NOT NULL,
+	[score] int NOT NULL,
+	[Op1]  varchar(200) NOT NULL,
+	[Op2] varchar(200) NOT NULL,
+	[Op3] varchar(200) NOT NULL,
+	[Op4] varchar(200) NOT NULL,
+	[Op5] varchar(200) NOT NULL,
+	[Op6] varchar(200) NOT NULL,
+	[Op7] varchar(200) NOT NULL,
+	[Op8] varchar(200) NOT NULL,
+	[Op9] varchar(200) NOT NULL,
+	[Op10] varchar(200) NOT NULL,
+	[Op11] varchar(200) NOT NULL,
+	[Op12] varchar(200) NOT NULL,
+	[Op13] varchar(200) NOT NULL,
+	[Op14] varchar(200) NOT NULL,
+	[Op15] varchar(200) NOT NULL,
+	[Op16] varchar(200) NOT NULL,
+	[Op17] varchar(200) NOT NULL,
+	[Op18] varchar(200) NOT NULL,
+	[Op19] varchar(200) NOT NULL,
+	[Op20] varchar(200) NOT NULL,
+	[Sol1] int NOT NULL,
+	[Sol2] int NOT NULL,
+	[Sol3] int NOT NULL,
+	[Sol4] int NOT NULL,
+	[Sol5] int NOT NULL,
+	[Sol6] int NOT NULL,
+	[Sol7] int NOT NULL,
+	[Sol8] int NOT NULL,
+	[Sol9] int NOT NULL,
+	[Sol10] int NOT NULL,
+	[Sol12] int NOT NULL,
+	[Sol13] int NOT NULL,
+	[Sol14] int NOT NULL,
+	[Sol15] int NOT NULL,
+	[Sol16] int NOT NULL,
+	[Sol17] int NOT NULL,
+	[Sol18] int NOT NULL,
+	[Sol19] int NOT NULL,
+	[Sol20] int NOT NULL,
+	PRIMARY KEY (id_hist_detail)
+);
+
+/** Enf_Hist**/
+Create TABLE [Enfant_Hist_Detail](
+	[id_enfant]int FOREIGN KEY REFERENCES Enfant(id_enfant),
+	[id_hist]int FOREIGN KEY REFERENCES Parent(id_hist)
+);
+
+/** Hist_Generale**/
+Create table[Hist_generale](
+	[id_hist_generale] Int Identity(1,1),
+	[niveau] varchar(200) NOT NULL,
+	[score] int NOT NULL,
+	PRIMARY KEY (id_hist_generale)
+);
+
+/**Enfant_Hist_Generale**/
+Create table[Enfant_Hist_generale](
+	[id_enfant]int Foreign key references Enfant(id_enfant),
+	[id_hist_generale] int FOreign key references Hist_generale(id_hist_generale)
+);

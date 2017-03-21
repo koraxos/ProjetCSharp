@@ -1,0 +1,12 @@
+\\etuln.stockage.univ-lorraine.fr\mertz12u\documents\visual studio 2013\Projects\ProjetCsharp\ProjetCsharp\bin\ProjetCsharp.dll.config
+\\etuln.stockage.univ-lorraine.fr\mertz12u\documents\visual studio 2013\Projects\ProjetCsharp\ProjetCsharp\bin\ProjetCsharp.dll
+\\etuln.stockage.univ-lorraine.fr\mertz12u\documents\visual studio 2013\Projects\ProjetCsharp\ProjetCsharp\bin\ProjetCsharp.pdb
+\\etuln.stockage.univ-lorraine.fr\mertz12u\documents\visual studio 2013\Projects\ProjetCsharp\ProjetCsharp\obj\Debug\ProjetCsharp.csprojResolveAssemblyReference.cache
+\\etuln.stockage.univ-lorraine.fr\mertz12u\documents\visual studio 2013\Projects\ProjetCsharp\ProjetCsharp\obj\Debug\ProjetCsharp.dll
+\\etuln.stockage.univ-lorraine.fr\mertz12u\documents\visual studio 2013\Projects\ProjetCsharp\ProjetCsharp\obj\Debug\ProjetCsharp.pdb
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCsharp\ProjetCsharp\bin\ProjetCsharp.dll.config
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCsharp\ProjetCsharp\bin\ProjetCsharp.dll
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCsharp\ProjetCsharp\bin\ProjetCsharp.pdb
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCsharp\ProjetCsharp\obj\Debug\ProjetCsharp.csprojResolveAssemblyReference.cache
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCsharp\ProjetCsharp\obj\Debug\ProjetCsharp.dll
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCsharp\ProjetCsharp\obj\Debug\ProjetCsharp.pdb
