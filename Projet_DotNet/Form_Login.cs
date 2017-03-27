@@ -33,12 +33,14 @@ namespace Projet_DotNet
         // Action click bouton Me connecter
         private void button1_Click(object sender, EventArgs e)
         {
-            bool valide; // Booléen qui déterminera si l'identifiant et le nom sont correctes
+            bool valide = false;// Booléen qui déterminera si l'identifiant et le nom sont correctes
 
             // Ici, implémenter les tests à réaliser pour vérifier la connexion
             valide = true;
 
 
+
+            // si reponse = 200
             if(valide) // Actions à faire si valide
             {
                 Form_Menu menu = new Form_Menu(parent);

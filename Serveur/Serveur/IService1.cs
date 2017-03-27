@@ -13,7 +13,6 @@ namespace ProjetCsharp
     [ServiceContract]
     public interface IService1
     {
-
         [OperationContract]
         [WebGet]
         string GetData(int value);
@@ -44,7 +43,7 @@ namespace ProjetCsharp
 
         [DataMember]
         public bool BoolValue
-        {
+        { 
             get { return boolValue; }
             set { boolValue = value; }
         }
