@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Projet_DotNet
 {
+    // Classe Menu
     public partial class Form_Menu : Form
     {
         // On garde l'accueil qui est toujours en mode hide
