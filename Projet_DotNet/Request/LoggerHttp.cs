@@ -11,13 +11,15 @@ namespace Projet_DotNet.Request
 
     class LoggerHttp
     {
+        public LoggerHttp() { }
+        //UriTemplate="/?nom={name}?prenom={prenom}")]
         public string logRequest(string name, string prenom){
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:46652/Logger.svc/");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:46652/Logger.svc/?nom="+name.Trim()+"&?prenom="+prenom.Trim());
             request.ContentType = "text/xml;charset=utf-8";
             request.ContentLength = 0;
             request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
             request.Credentials = CredentialCache.DefaultNetworkCredentials;
-            request.Method = WebRequestMethods.Http.Post;
+            request.Method = WebRequestMethods.Http.Get;
             WebResponse serviceRes = request.GetResponse();
             StreamReader reader = new StreamReader(serviceRes.GetResponseStream());
             var result = reader.ReadToEnd();

@@ -1,0 +1,6 @@
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\Projet_DotNet\Serveur\Serveur\bin\ProjetCsharp.dll.config
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\Projet_DotNet\Serveur\Serveur\bin\ProjetCsharp.dll
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\Projet_DotNet\Serveur\Serveur\bin\ProjetCsharp.pdb
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\Projet_DotNet\Serveur\Serveur\obj\Debug\Serveur.csprojResolveAssemblyReference.cache
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\Projet_DotNet\Serveur\Serveur\obj\Debug\ProjetCsharp.dll
+C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\Projet_DotNet\Serveur\Serveur\obj\Debug\ProjetCsharp.pdb

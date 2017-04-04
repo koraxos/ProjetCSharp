@@ -13,7 +13,8 @@ namespace ProjetCsharp
     public interface ILogger
     {
         [OperationContract]
-        [WebInvoke(Method="POST",UriTemplate="/?nom={name}&?prenom={prenom}")]
-        void log(string name,string prenom);
+        //[WebInvoke(Method="GET",UriTemplate="/?nom={name}?prenom={prenom}")]
+        [WebGet(UriTemplate="/?nom={nom}&?prenom={prenom}")]
+        List<string> log(string nom,string prenom);
     }
 }

@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Projet_DotNet.Request;
 
 namespace Projet_DotNet
 {
     public partial class Form_Login : Form
     {
+        private LoggerHttp logger;
         // Le parent, histoire de pouvoir revenir en arrière
         protected Accueil parent;
 
@@ -20,6 +22,7 @@ namespace Projet_DotNet
         {
             InitializeComponent();
             this.parent = parent;
+            this.logger = new LoggerHttp();
         }
 
 
@@ -38,8 +41,10 @@ namespace Projet_DotNet
             // Ici, implémenter les tests à réaliser pour vérifier la connexion
             valide = true;
 
-
-
+           // this.textBox1.Text;
+           // this.textBox2.Text;
+           string reponse= this.logger.logRequest(this.textBox1.Text, this.textBox2.Text);
+           System.Console.WriteLine(reponse);
             // si reponse = 200
             if(valide) // Actions à faire si valide
             {

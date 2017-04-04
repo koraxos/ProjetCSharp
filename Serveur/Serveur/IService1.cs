@@ -13,9 +13,6 @@ namespace ProjetCsharp
     [ServiceContract]
     public interface IService1
     {
-        [OperationContract]
-        [WebGet]
-        string GetData(int value);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
