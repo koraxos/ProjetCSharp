@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\util\Desktop\Projet_Mo\Projet_DotNet\Projet_DotNet\bin\Debug\Projet_DotNet.exe.config
 C:\Users\util\Desktop\Projet_Mo\Projet_DotNet\Projet_DotNet\bin\Debug\Projet_DotNet.exe
 C:\Users\util\Desktop\Projet_Mo\Projet_DotNet\Projet_DotNet\bin\Debug\Projet_DotNet.pdb
@@ -37,3 +38,19 @@ C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\Projet_DotNet\Projet_DotNet
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\Projet_DotNet\Projet_DotNet\obj\Debug\Projet_DotNet.exe
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\Projet_DotNet\Projet_DotNet\obj\Debug\Projet_DotNet.pdb
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\Projet_DotNet\Projet_DotNet\obj\Debug\Projet_DotNet.csprojResolveAssemblyReference.cache
+=======
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\bin\Debug\Projet_DotNet.exe.config
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.exe
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.pdb
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\bin\Debug\Projet_DotNet.exe
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\bin\Debug\Projet_DotNet.pdb
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.csprojResolveAssemblyReference.cache
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Accueil.resources
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Form_Correction.resources
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Form_EndGame.resources
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Form_Game.resources
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Form_Login.resources
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Form_Menu.resources
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Properties.Resources.resources
+C:\Users\util\Documents\GitHub\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.csproj.GenerateResource.Cache
+>>>>>>> 9f3d61227e6cef2bafc7a3521669529543334fb8
