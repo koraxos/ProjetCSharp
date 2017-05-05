@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projet_DotNet.Modele;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +14,12 @@ namespace Projet_DotNet
     public partial class Form_EndGame : Form
     {
         Form_Menu menu;
-        int[] resultats;
+        Jeu jeu;
 
-        public Form_EndGame(Form_Menu menu, int[] resultats,  bool entrainement)
+        public Form_EndGame(Form_Menu menu, Jeu j,  bool entrainement)
         {
             InitializeComponent();
-            this.resultats = resultats;
+            this.jeu = j;
             this.menu = menu;
             if (entrainement)
                 label1.Text = "Bravo ! Tu as fini cet entrainement ! Tu peux maintenant regarder la correction";
@@ -26,7 +27,7 @@ namespace Projet_DotNet
 
         private void button_corr_Click(object sender, EventArgs e)
         {
-            Form_Correction corr = new Form_Correction(menu, resultats);
+            Form_Correction corr = new Form_Correction(menu, jeu);
             corr.Show();
             this.Close();
         }

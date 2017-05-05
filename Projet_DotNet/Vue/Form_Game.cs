@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projet_DotNet.Modele;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,21 +34,19 @@ namespace Projet_DotNet
         // Le syntheti=seur de sons
         System.Speech.Synthesis.SpeechSynthesizer synthe = new System.Speech.Synthesis.SpeechSynthesizer();
 
-        // Un tableau contenant les operations à faire
-        int[,] operations = new int[6, 2];
-
-        // Et on va stocker les resultats de l'util
-        int[] resultats = new int[6];
-
         // Operation en cours de traitement
         int operation_en_cours;
 
+        // Jeu
+        Jeu jeu;
+
         // Constructeur
-        public Form_Game(Form_Menu menu, bool entrainement=false)
+        public Form_Game(Form_Menu menu, Jeu j, bool entrainement=false)
         {
             InitializeComponent();
             this.menu = menu;
             this.entrainement = entrainement;
+            this.jeu = j;
 
             // Active/Désactive le son (Est-ce réellement utile ? Ca dépend de notre modélisation, je l'ai mis au cas ou pour le moment pour m'entrainer
             this.son = true;
@@ -56,20 +55,7 @@ namespace Projet_DotNet
 
             // On commence par la premire operation, sans blague ?
             operation_en_cours = 0;
-
-            // Pour le test, on va remplir le tableau avec des valeurs au pif
-            operations[0, 0] = 2;
-            operations[0, 1] = 2;
-            operations[1, 0] = 9;
-            operations[1, 1] = 7;
-            operations[2, 0] = 1;
-            operations[2, 1] = 2;
-            operations[3, 0] = 6;
-            operations[3, 1] = 2;
-            operations[4, 0] = 4;
-            operations[4, 1] = 6;
-            operations[5, 0] = 5;
-            operations[5, 1] = 2;
+            
 
 
             // Champs dépendant de si on est en entrainement, ou en test "réel"
@@ -126,7 +112,7 @@ namespace Projet_DotNet
         // Délégué du thread de lecture du son
         public void thread_lecture()
         {
-            synthe.Speak(operations[operation_en_cours, 0] + " multiplié par " + operations[operation_en_cours, 1] + ", égal");
+            synthe.Speak( jeu.getOperateur(operation_en_cours,0) + " multiplié par " + jeu.getOperateur(operation_en_cours, 1) + ", égal");
             Thread.CurrentThread.Abort();
         }
 
@@ -181,11 +167,11 @@ namespace Projet_DotNet
             // On stocke le résultat
 
             if (textBox1.Text != "")
-                resultats[operation_en_cours] = Convert.ToInt32(textBox1.Text);
+                jeu.setReponse(operation_en_cours, Convert.ToInt32(textBox1.Text));
             else
-                resultats[operation_en_cours] = 0;
+                jeu.setReponse(operation_en_cours, 0);
 
-            if (operation_en_cours < operations.GetLength(0)-1)
+            if (operation_en_cours < jeu.getLength()-1)
             {
                 operation_en_cours++;
                 go_operation();
@@ -194,7 +180,7 @@ namespace Projet_DotNet
             {
                 // On ne peut plus incrémenter operation_en_cours : FIN du test/entrainement
                 // A gerer plus précisement
-                Form_EndGame form = new Form_EndGame(menu, resultats, entrainement);
+                Form_EndGame form = new Form_EndGame(menu, jeu, entrainement);
                 
                 form.Show();
                 this.Close();
@@ -207,9 +193,9 @@ namespace Projet_DotNet
         {
 
             // On actualise le label de l'opération
-            label_operation.Text = operations[operation_en_cours, 0] + " x " + operations[operation_en_cours, 1] + " = ";
+            label_operation.Text = jeu.getOperateur(operation_en_cours,0) + " x " + jeu.getOperateur(operation_en_cours, 1) + " = ";
             int op = operation_en_cours + 1;
-            labeloperationencours.Text = "Opération " + op + "/" + operations.GetLength(0);
+            labeloperationencours.Text = "Opération " + op + "/" + jeu.getLength();
             // On vide la textbox
             textBox1.Text = "";
             if (!entrainement)
