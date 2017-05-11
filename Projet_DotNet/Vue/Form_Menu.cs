@@ -1,12 +1,6 @@
 ﻿using Projet_DotNet.Modele;
+using Projet_DotNet.Vue;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Projet_DotNet
@@ -54,6 +48,14 @@ namespace Projet_DotNet
         {
             Form_Game jeu = new Form_Game(this, new Jeu(eleve, 0), true);
             jeu.Show();
+            this.Hide();
+        }
+
+        private void button_tables_Click(object sender, EventArgs e)
+        {
+            
+            Form_Tables tables = new Form_Tables(this);
+            tables.Show();
             this.Hide();
         }
     }

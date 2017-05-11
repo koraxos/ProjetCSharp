@@ -95,7 +95,6 @@
             // 
             this.button_tables.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_tables.AutoSize = true;
-            this.button_tables.Enabled = false;
             this.button_tables.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_tables.Location = new System.Drawing.Point(29, 335);
             this.button_tables.Margin = new System.Windows.Forms.Padding(20, 3, 3, 20);
@@ -104,6 +103,7 @@
             this.button_tables.TabIndex = 4;
             this.button_tables.Text = "Voir mes tables";
             this.button_tables.UseVisualStyleBackColor = true;
+            this.button_tables.Click += new System.EventHandler(this.button_tables_Click);
             // 
             // Form_Menu
             // 
