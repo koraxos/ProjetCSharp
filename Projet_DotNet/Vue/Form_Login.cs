@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Projet_DotNet.Controleur_Connexion;
 
 namespace Projet_DotNet
 {
@@ -15,7 +16,6 @@ namespace Projet_DotNet
     {
         // Le parent, histoire de pouvoir revenir en arrière
         protected Accueil parent;
-
         // Constructeur
         public Form_Login(Accueil parent)
         {
@@ -34,12 +34,13 @@ namespace Projet_DotNet
         // Action click bouton Me connecter
         private void button1_Click(object sender, EventArgs e)
         {
-            Eleve valide = Controleur_Connexion.Controleur_Connexion.estValide(this.textBox1.Text, this.textBox2.Text);
+            int valide = 0;
+            valide = ControleurConnexion.estValide(this.textBox1.Text, this.textBox2.Text);
+            Eleve eleve =ControleurConnexion.getEleve(valide,this.textBox1.Text, this.textBox2.Text);
             
-            valide = new Eleve("coucou", "caca", 3, 0, 0); // A supprimer quand le truc sera implémenté
-            if (valide!=null) // Actions à faire si valide
+            if (valide>0) // Actions à faire si valide
             {
-                Form_Menu menu = new Form_Menu(parent, valide);
+                Form_Menu menu = new Form_Menu(parent, eleve);
                 menu.Show();
                 this.Close();
             }

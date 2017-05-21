@@ -64,6 +64,7 @@
     <Content Include="App_Data\MyDatabase_log.ldf">
       <DependentUpon>MyDatabase.mdf</DependentUpon>
     </Content>
+    <Content Include="Game.svc" />
     <Content Include="Logger.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config">
@@ -72,6 +73,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSource.cs" />
+    <Compile Include="Game.svc.cs">
+      <DependentUpon>Game.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IGame.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="Logger.svc.cs">
       <DependentUpon>Logger.svc</DependentUpon>

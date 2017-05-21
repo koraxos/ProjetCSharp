@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Projet_DotNet.Controleur;
 namespace Projet_DotNet
 {
     public partial class Form_EndGame : Form
@@ -21,6 +21,8 @@ namespace Projet_DotNet
             InitializeComponent();
             this.jeu = j;
             this.menu = menu;
+            Controleur_Jeu.sendJeu(this.jeu);
+
             if (entrainement)
                 label1.Text = "Bravo ! Tu as fini cet entrainement ! Tu peux maintenant regarder la correction";
         }

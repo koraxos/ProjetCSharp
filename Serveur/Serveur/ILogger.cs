@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.IO;
+using System.Xml;
 
 namespace ProjetCsharp
 {
@@ -13,8 +15,13 @@ namespace ProjetCsharp
     public interface ILogger
     {
         [OperationContract]
-        //[WebInvoke(Method="GET",UriTemplate="/?nom={name}?prenom={prenom}")]
-        [WebGet(UriTemplate="/?nom={nom}&?prenom={prenom}")]
-        List<string> log(string nom,string prenom);
+        [WebGet(UriTemplate="/?nom={nom}&?prenom={prenom}",ResponseFormat=WebMessageFormat.Xml)]
+        XmlElement log(string nom,string prenom);
+
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/profil?id={id}", ResponseFormat = WebMessageFormat.Xml)]
+        XmlElement getProfil(string id);
     }
+
 }

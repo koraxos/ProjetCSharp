@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projet_DotNet.Modele
 {
-    class Operation
+    public class Operation
     {
         int operande1;
         int operande2;

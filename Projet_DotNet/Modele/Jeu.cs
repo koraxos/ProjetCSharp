@@ -18,7 +18,7 @@ namespace Projet_DotNet.Modele
         // Un tableau de reponses
         int[] reponses;
 
-        Operation[] operations;
+        public Operation[] operations;
         // Et un tableau d'opérations
 
         // genere le Jeu en fonction de l'eleve, et l'associe à ce dernier
@@ -47,6 +47,15 @@ namespace Projet_DotNet.Modele
             return operations[operation].getOperateur(operateur);
         }
 
+        public Operation[] getOperations()
+        {
+            return operations;
+        }
+
+        public Eleve getEleve()
+        {
+            return eleve;
+        }
         public void setReponse(int rang, int reponse)
         {
             reponses[rang] = reponse;

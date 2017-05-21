@@ -10,7 +10,6 @@ namespace Projet_DotNet.Modele
     {
         // Nom de l'eleve
         String nom;
-
         // Prenom de l'eleve
         String prenom;
 
@@ -45,7 +44,19 @@ namespace Projet_DotNet.Modele
             this.difficulté = difficulté;
             this.nb_test = nb_test;
         }
+ 
+       // Le reste (getter, setter, fonctions utiles) est a faire
 
-        // Le reste (getter, setter, fonctions utiles) est a faire
+        public string getPrenom()
+        {
+            return prenom;
+        }
+
+        public string getNom()
+        {
+            return nom;
+        }
+        
+    
     }
 }

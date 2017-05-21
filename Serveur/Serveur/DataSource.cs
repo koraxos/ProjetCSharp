@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace ProjetCsharp
 {
@@ -15,8 +16,7 @@ namespace ProjetCsharp
         {
             
           //conn= new SqlConnection("Data Source=(LocalDB)\\v11.0;AttachDbFilename='\\\\etuln.stockage.univ-lorraine.fr\\mertz12u\\Documents\\Visual Studio 2013\\Projects\\ProjetCsharp\\ProjetCsharp\\App_Data\\MyDatabase.mdf';Integrated Security=True");
-          conn= new SqlConnection("Data Source=(LocalDB)\\v11.0;AttachDbFilename='C:\\Users\\MERTZ\\Documents\\Visual Studio 2013\\Projects\\Projet_DotNet\\Serveur\\Serveur\\App_Data\\MyDatabase.mdf';Integrated Security=True");
-
+            conn = new SqlConnection("Data Source=(LocalDB)\\v11.0;AttachDbFilename='C:\\Users\\MERTZ\\Documents\\Visual Studio 2013\\Projects\\ProjetCSharp\\Serveur\\Serveur\\App_Data\\MyDatabase.mdf';Integrated Security=True;");
         }
 
         public SqlConnection getDataSource(){    

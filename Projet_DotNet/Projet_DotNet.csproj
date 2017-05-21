@@ -49,9 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controleur\Controleur_Connexion.cs" />
+    <Compile Include="Controleur\Controleur_Jeu.cs" />
     <Compile Include="Modele\Eleve.cs" />
     <Compile Include="Modele\Jeu.cs" />
     <Compile Include="Modele\Operation.cs" />
+    <Compile Include="Request\JeuHttp.cs" />
     <Compile Include="Vue\Accueil.cs">
       <SubType>Form</SubType>
     </Compile>
