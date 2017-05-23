@@ -35,10 +35,29 @@ namespace Projet_DotNet.Modele
         private void GenererJeu()
         {
             operations = new Operation[20];
-
-            for(int i=0; i<20; i++)
+            Random r = new Random();
+            int operateur1, operateur2=11, inverse;
+            for (int i = 0; i < 20; i++)
             {
-                operations[i] = new Operation(1, 1);
+                
+                if (eleve.getDifficulte() == 0)
+                {
+                    operateur1 = eleve.getProfil();
+                }
+                else
+                {
+                    operateur1 = r.Next(1, eleve.getProfil());
+                }
+                int anc_op2 = operateur2;
+
+                // Histoire quand même de ne pas avoir deux fois la même opération
+                while(operateur2==anc_op2)
+                    operateur2 = r.Next(1, 11);
+                inverse = r.Next(0, 2);
+                if (inverse == 0)
+                    operations[i] = new Operation(operateur1, operateur2);
+                else
+                    operations[i] = new Operation(operateur2, operateur1);
             }
         }
 
