@@ -42,7 +42,7 @@ namespace ProjetParent
 
         private void ajouterUnEnfantToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Form_AjoutEnfant fae = new Form_AjoutEnfant();
+            Form_AjoutEnfant fae = new Form_AjoutEnfant(p);
             fae.Show();
 
             // Une fois que la fenêtre d'ajout est fermée, on rafraîchit la fenêtre

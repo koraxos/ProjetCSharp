@@ -16,18 +16,30 @@ namespace Projet_DotNet.Request
 
 
         public int logRequest(string name, string prenom){
+            int id_enfant=0;
+            try
+            {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:46652/Logger.svc/?nom="+name.Trim()+"&?prenom="+prenom.Trim());
             request.ContentType = "text/xml;charset=utf-8";
             request.ContentLength = 0;
             request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
             request.Credentials = CredentialCache.DefaultNetworkCredentials;
             request.Method = WebRequestMethods.Http.Get;
+           
             WebResponse serviceRes = request.GetResponse();
             Stream stream = serviceRes.GetResponseStream();
 
-            XmlDocument result = new XmlDocument();   result.Load(stream);
+            XmlDocument result = new XmlDocument(); result.Load(stream);
             XmlNode id = result.SelectSingleNode("//id");
-            return Int32.Parse(id.InnerText);
+            id_enfant = Int32.Parse(id.InnerText);
+           }
+            catch (WebException webEx) {
+                WebResponse errResp = webEx.Response;
+                Stream resp = errResp.GetResponseStream();
+                StreamReader reader = new StreamReader(resp);
+                System.Console.WriteLine(reader.ReadToEnd());
+            }
+            return id_enfant;
         }
 
         public void getprofilRequest(int id,int difficulte,int nb_test)

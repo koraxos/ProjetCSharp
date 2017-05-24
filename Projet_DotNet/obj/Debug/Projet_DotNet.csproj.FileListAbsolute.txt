@@ -11,10 +11,10 @@ C:\Users\util\Source\Repos\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Fo
 C:\Users\util\Source\Repos\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Form_Menu.resources
 C:\Users\util\Source\Repos\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Properties.Resources.resources
 C:\Users\util\Source\Repos\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.csproj.GenerateResource.Cache
+C:\Users\util\Source\Repos\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Vue.Form_Tables.resources
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCSharp\Projet_DotNet\bin\Debug\Projet_DotNet.exe.config
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCSharp\Projet_DotNet\bin\Debug\Projet_DotNet.exe
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCSharp\Projet_DotNet\bin\Debug\Projet_DotNet.pdb
-C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.csprojResolveAssemblyReference.cache
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Accueil.resources
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Form_Correction.resources
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Form_EndGame.resources
@@ -26,4 +26,3 @@ C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCSharp\Projet_DotNet\
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.csproj.GenerateResource.Cache
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.exe
 C:\Users\MERTZ\Documents\Visual Studio 2013\Projects\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.pdb
-C:\Users\util\Source\Repos\ProjetCSharp\Projet_DotNet\obj\Debug\Projet_DotNet.Vue.Form_Tables.resources

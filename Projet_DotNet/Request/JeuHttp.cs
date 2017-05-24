@@ -76,11 +76,18 @@ namespace Projet_DotNet.Request
             request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
             request.Credentials = CredentialCache.DefaultNetworkCredentials;
             request.Method = WebRequestMethods.Http.Get;
-         
+            try { 
             WebResponse serviceRes = request.GetResponse();
             Stream stream = serviceRes.GetResponseStream();
-
             StreamReader reader = new StreamReader(stream);
+            
+            }
+            catch (WebException webEx) {
+                WebResponse errResp = webEx.Response;
+                Stream resp = errResp.GetResponseStream();
+                StreamReader reader = new StreamReader(resp);
+                System.Console.WriteLine(reader.ReadToEnd());
+            }
             return 1;
         
         }

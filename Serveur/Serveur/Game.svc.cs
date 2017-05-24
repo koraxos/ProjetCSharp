@@ -59,7 +59,7 @@ namespace ProjetCsharp
             cmd.Parameters[1].Value = nom;
             cmd.Prepare();
             result =(Int32) cmd.ExecuteScalar();
-            
+            return result.ToString();
         }
 
 

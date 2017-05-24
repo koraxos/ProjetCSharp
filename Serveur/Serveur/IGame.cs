@@ -16,8 +16,8 @@ namespace ProjetCsharp
     {
 
         [OperationContract]
-        [WebGet(UriTemplate = "/Maj?nom={nom}")]
-        string majEleve(string nom);
+        [WebGet(UriTemplate = "/Maj?nom={nom}&?prenom={prenom}")]
+        string majEleve(string nom,string prenom);
 
 
         [OperationContract]
