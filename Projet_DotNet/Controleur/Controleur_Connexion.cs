@@ -8,10 +8,11 @@ using Projet_DotNet.Request;
 using Projet_DotNet.Modele;
 namespace Projet_DotNet.Controleur_Connexion
 {
-    public class ControleurConnexion
+    public static class ControleurConnexion
     {
 
-        static LoggerHttp logger=new LoggerHttp();
+        public static LoggerHttp logger=new LoggerHttp();
+        private static JeuHttp jeuHttp = new JeuHttp();
 
         public ControleurConnexion(){
 
@@ -29,13 +30,16 @@ namespace Projet_DotNet.Controleur_Connexion
             return new Eleve(nom, prenom, profil, difficulte, nb_test);
         }
         // Ajoute le Jeu J à la BDD, retourne true si l'opération a réussi, false sinon
-        static bool envoie_test(Jeu j)
+        public static bool envoie_test(Jeu j)
         {
-            return false;
+            int validation;//si validation ==1 alors tout s'est bien passé
+            validation = jeuHttp.sendJeu(j);
+
+            return validation>0;
         }
 
         //Mets à jour l'eleve dans la BDD, retourne vrai ou faux comme d'hab
-        static bool MAJEleve(String nom)
+        static bool MAJEleve(Eleve nom)
         {
             return true;
         }

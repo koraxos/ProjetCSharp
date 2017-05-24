@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projet_DotNet", "Projet_Dot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serveur", "Serveur\Serveur\Serveur.csproj", "{467E3ABE-03CC-4F7C-95BA-A18D12F49472}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetParent", "ProjetParent\ProjetParent.csproj", "{C16FD3A5-7307-40E0-8DAF-4865503CC0E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{467E3ABE-03CC-4F7C-95BA-A18D12F49472}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{467E3ABE-03CC-4F7C-95BA-A18D12F49472}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{467E3ABE-03CC-4F7C-95BA-A18D12F49472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C16FD3A5-7307-40E0-8DAF-4865503CC0E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C16FD3A5-7307-40E0-8DAF-4865503CC0E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C16FD3A5-7307-40E0-8DAF-4865503CC0E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C16FD3A5-7307-40E0-8DAF-4865503CC0E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

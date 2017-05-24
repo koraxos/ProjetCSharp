@@ -66,6 +66,7 @@
     </Content>
     <Content Include="Game.svc" />
     <Content Include="Logger.svc" />
+    <Content Include="Parent.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -78,8 +79,12 @@
     </Compile>
     <Compile Include="IGame.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="IParent.cs" />
     <Compile Include="Logger.svc.cs">
       <DependentUpon>Logger.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Parent.svc.cs">
+      <DependentUpon>Parent.svc</DependentUpon>
     </Compile>
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>

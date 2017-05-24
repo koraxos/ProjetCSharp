@@ -18,6 +18,7 @@ namespace ProjetCsharp
     {
         private DataSource datasource = new DataSource();
         private Logger logger = new Logger();
+
         private string InsertTest=
             " INSERT INTO Hist_Detail(niveau,score,"+
             "Op1,Op2,Op3,Op4,Op5,Op6,Op7,Op8,Op9,Op10,Op11,Op12,Op13,Op14,Op15,Op16,Op17,Op18,Op19,Op20,"+
@@ -28,61 +29,40 @@ namespace ProjetCsharp
             " SELECT CAST(SCOPE_IDENTITY() AS int)";
   
         private string InsertEnfHist=
-"INSERT INTO Enfant_Hist_Detail(id_enfant,id_hist) VALUES(@idEnf,@idDet)";
-
-        
-        private string getNiveau="Select niveau "+
-" from Hist_generale as Gen ,  Enfant_Hist_generale as EnfGen, Enfant as Enf"+
-" where Enf.prenom=@prenom and Enf.nom=@nom"+
-" and Enf.id_enfant=EnfGen.id_enfant and EnfGen.id_hist_generale=Gen.id_hist_generale";
+        "INSERT INTO Enfant_Hist_Detail(id_enfant,id_hist) VALUES(@idEnf,@idDet)";
 
         private int score;
+        
+        private string getNiveau="Select niveau "+
+    " from Hist_generale as Gen ,  Enfant_Hist_generale as EnfGen, Enfant as Enf"+
+    " where Enf.prenom=@prenom and Enf.nom=@nom"+
+    " and Enf.id_enfant=EnfGen.id_enfant and EnfGen.id_hist_generale=Gen.id_hist_generale";
 
-        private string MAJ = "SELECT  DET.id_hist_detail " +
-" FROM Hist_Detail as DET , Enfant_Hist_Detail as EnfDet, " +
-" Hist_generale as Gen, Enfant_Hist_generale as EnfGen" +
-" Where Gen.niveau=DET.niveau and EnfDet.id_enfant=@idEnfant";
-        /*public string majEleve(string nom, string prenom)
-        {
-            // on va chercher l'id de l'enfant
-            XmlNode id_node = logger.log(nom, prenom);
-            int id_enfant = Int32.Parse(id_node.SelectSingleNode("//id").InnerText);
+
+        private string MAJ = "Select Count(*)"+
+"from Hist_Detail as Det ,Enfant_Hist_Detail as EnfDet, Enfant as Enf"+
+"where Det.id_hist_detail=EnfDet.id_hist"+
+"and ENf.id_enfant=EnfDet.id_enfant and Enf.nom=@nom and Enf.prenom=@prenom";
+
+        public string majEleve(string nom,string prenom)
+        {   
             SqlCommand cmd = new SqlCommand(MAJ);
-            SqlDataReader result;
+            int result;
 
             datasource.openDataSource();
 
-            SqlParameter prenomParam = cmd.Parameters.Add("@idEnfant", SqlDbType.Int);
+            SqlParameter nomParam = cmd.Parameters.Add("@nom", SqlDbType.NVarChar, nom.Length);
+            SqlParameter prenomParam = cmd.Parameters.Add("@prenom", SqlDbType.NVarChar, prenom.Length);
             //on va chercher le niveau de l'enfant
             cmd.Connection = datasource.getDataSource();
-            cmd.Parameters[0].Value = id_enfant;
+            cmd.Parameters[0].Value = prenom;
+            cmd.Parameters[1].Value = nom;
             cmd.Prepare();
-            result = cmd.ExecuteReader();
-            int nb_test = 0;
-            int niveau;
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    niveau = Int32.Parse(result.GetString(0));
-                
-                    if (nb_test <= 3)
-                        nb_test = nb_test = nb_test + 1;
-                }
-            }
-            result.Close();
-            if (nb_test == 0 ||
-                nb_test == 1 ||
-                nb_test == 2)
-            {
+            result =(Int32) cmd.ExecuteScalar();
+            
+        }
 
-            }
-            else
-            {
 
-            }
-
-        }*/
         //Extrait les opérandes, 1 et 2 de chaque opération 
         public string[] extractOperande(XmlDocument xml){
             string[] operandes = new string[20];
@@ -120,7 +100,6 @@ namespace ProjetCsharp
             }
             return resultats;
         }
-
 
         //Fonction qui insère un test dans la base
         public string saveTest(string jeu)

@@ -16,6 +16,7 @@ namespace Projet_DotNet
         Form_Menu menu;
         Jeu jeu;
 
+
         public Form_EndGame(Form_Menu menu, Jeu j,  bool entrainement)
         {
             InitializeComponent();
