@@ -15,10 +15,13 @@ namespace ProjetCsharp
     public interface IGame
     {
 
+        [OperationContract]
+        [WebGet(UriTemplate = "/Maj?nom={nom}&?prenom={prenom}")]
+        string majEleve(string nom,string prenom);
+    
 
         [OperationContract]
-        [WebInvoke(Method="POST",
-            UriTemplate = "/addJeu", RequestFormat = WebMessageFormat.Xml)]
-        Stream saveTest(XmlElement xml);
+        [WebGet(UriTemplate="/?jeu={jeu}")]
+        string saveTest(string jeu);
     }
 }

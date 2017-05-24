@@ -8,6 +8,7 @@ using System.IO;
 using System.Xml;
 using Projet_DotNet.Modele;
 
+using System.Text.RegularExpressions;
 namespace Projet_DotNet.Request
 {
     class JeuHttp
@@ -44,7 +45,6 @@ namespace Projet_DotNet.Request
             XmlElement operations_node = doc.CreateElement(string.Empty, "operations", string.Empty);
             for(int i=0; i<20; i++)
             {
-                operations[i] = new Operation(1, 1);
                 XmlElement operation =doc.CreateElement(string.Empty, "operation"+i.ToString(), string.Empty);
 
                 XmlElement operande1 = doc.CreateElement(string.Empty, "operande1", string.Empty);
@@ -68,29 +68,21 @@ namespace Projet_DotNet.Request
             }
 
             eleve_node.AppendChild(operations_node);
-
-            byte[] byteArray = Encoding.UTF8.GetBytes(doc.InnerXml);
-            //transmettre les operations au serveur avec le test et l'élève
-            // 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:46652/Game.svc/addJeu");
-            request.ContentType = "text/xml;charset=utf-8;";
-            request.ContentLength = byteArray.Length;
+            string test=doc.InnerXml;
+            Console.WriteLine(doc.InnerXml);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:46652/Game.svc/?jeu="+test.ToString());
+            request.ContentType = "text/xml;charset=utf-8";
+            request.ContentLength = 0;
+            request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
             request.Credentials = CredentialCache.DefaultNetworkCredentials;
-            request.Method = WebRequestMethods.Http.Post;
-            Stream requestStream = request.GetRequestStream();
-            requestStream.Write(byteArray,0,byteArray.Length);
-            requestStream.Close();
-
-            HttpWebResponse serviceRes =(HttpWebResponse) request.GetResponse();
-            if (serviceRes.StatusCode == HttpStatusCode.OK)
-                return 1;
-            else
-                return 0;
-            /*
+            request.Method = WebRequestMethods.Http.Get;
+         
+            WebResponse serviceRes = request.GetResponse();
             Stream stream = serviceRes.GetResponseStream();
-            XmlDocument result = new XmlDocument();   result.Load(stream);
-            XmlNode id = result.SelectSingleNode("//id");
-            return Int32.Parse(id.InnerText);*/
+
+            StreamReader reader = new StreamReader(stream);
+            return 1;
+        
         }
 
      }

@@ -138,5 +138,52 @@ using System.IO;
                     return erreur("0");
                 }
             }
+        
+           public string logSsString(string name, string prenom)
+            {               
+                SqlDataReader result;
+                List<string> temp=new List<string>();
+
+                XmlDocument answer = genericXml();
+                SqlCommand cmd = new SqlCommand(logCommand);
+                dataSource.openDataSource();
+                cmd.Connection = dataSource.getDataSource();
+
+                SqlParameter prenomParam = cmd.Parameters.Add("@prenom", SqlDbType.NVarChar,prenom.Length);
+                SqlParameter nomParam = cmd.Parameters.Add("@nom", SqlDbType.NVarChar,name.Length);
+
+                cmd.Parameters[0].Value = prenom;
+                cmd.Parameters[1].Value = name;
+                cmd.Prepare();
+                    
+                result=cmd.ExecuteReader();
+
+                if (result.HasRows)
+                {
+                    while (result.Read())
+                    {
+                        temp.Add(result.GetInt32(0).ToString());//id
+                    }
+
+                    string[] _temp=temp.ToArray();
+                    dataSource.closeDataSource();
+                    XmlElement profil= answer.CreateElement(string.Empty,"profil",string.Empty);
+                    answer.AppendChild(profil);
+
+                    XmlElement idEnfant=answer.CreateElement(string.Empty,"id",string.Empty);
+                    XmlText id_text = answer.CreateTextNode(_temp[0]);
+                    idEnfant.AppendChild(id_text);
+
+                    profil.AppendChild(idEnfant);
+                  
+                    return answer.DocumentElement.OuterXml;   
+                }
+                else
+                {
+
+                    dataSource.closeDataSource();
+                    return "erreur";
+                }
+            }
         }
   }

@@ -15,7 +15,9 @@ namespace Projet_DotNet.Controleur
         public static void sendJeu(Jeu j)
         {
             int validation;//si validation ==1 alors tout s'est bien passé
-            jeuHttp.sendJeu(j);
+            validation=jeuHttp.sendJeu(j);
+
+            System.Console.WriteLine(validation.ToString());
         }
 
     }
