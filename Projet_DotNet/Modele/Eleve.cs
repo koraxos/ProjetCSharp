@@ -71,5 +71,25 @@ namespace Projet_DotNet.Modele
         {
             return profil;
         }
+
+        public void setNbTest(int i)
+        {
+            nb_test = i;
+        }
+
+        public int getNbtest()
+        {
+            return nb_test;
+        }
+
+        public void setDifficulte(int i)
+        {
+            difficulte = i;
+        }
+
+        public void setProfil(int i)
+        {
+            profil = i;
+        }
     }
 }

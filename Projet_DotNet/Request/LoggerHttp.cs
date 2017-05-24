@@ -10,7 +10,7 @@ using System.Xml;
 namespace Projet_DotNet.Request
 {
 
-    class LoggerHttp
+    public class LoggerHttp
     {
         public LoggerHttp() { }
 

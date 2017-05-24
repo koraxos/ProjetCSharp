@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Projet_DotNet.Controleur_Connexion;
+using Projet_DotNet.Controleur;
 
 namespace Projet_DotNet
 {
@@ -34,11 +34,11 @@ namespace Projet_DotNet
         // Action click bouton Me connecter
         private void button1_Click(object sender, EventArgs e)
         {
-            int valide = 0;
-            valide = ControleurConnexion.estValide(this.textBox1.Text, this.textBox2.Text);
-            Eleve eleve =ControleurConnexion.getEleve(valide,this.textBox1.Text, this.textBox2.Text);
+            int valide=0;
+            valide = ControleurConnexion.getInstance().estValide(this.textBox1.Text, this.textBox2.Text);
+            Eleve eleve =ControleurConnexion.getInstance().getEleve(valide,this.textBox1.Text, this.textBox2.Text);
             
-            if (valide>0) // Actions à faire si valide
+            if (valide !=0) // Actions à faire si valide
             {
                 Form_Menu menu = new Form_Menu(parent, eleve);
                 menu.Show();

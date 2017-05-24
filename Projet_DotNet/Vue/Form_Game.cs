@@ -179,7 +179,10 @@ namespace Projet_DotNet
             else
             {
                 // On ne peut plus incrémenter operation_en_cours : FIN du test/entrainement
-                // A gerer plus précisement
+
+                
+
+
                 Form_EndGame form = new Form_EndGame(menu, jeu, entrainement);
                 
                 form.Show();

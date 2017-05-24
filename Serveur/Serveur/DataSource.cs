@@ -17,6 +17,8 @@ namespace ProjetCsharp
             
           //conn= new SqlConnection("Data Source=(LocalDB)\\v11.0;AttachDbFilename='\\\\etuln.stockage.univ-lorraine.fr\\mertz12u\\Documents\\Visual Studio 2013\\Projects\\ProjetCsharp\\ProjetCsharp\\App_Data\\MyDatabase.mdf';Integrated Security=True");
             conn = new SqlConnection("Data Source=(LocalDB)\\v11.0;AttachDbFilename='C:\\Users\\MERTZ\\Documents\\Visual Studio 2013\\Projects\\ProjetCSharp\\Serveur\\Serveur\\App_Data\\MyDatabase.mdf';Integrated Security=True;");
+            //conn = new SqlConnection("Data Source=(LocalDB)\\v11.0;AttachDbFilename='C:\\Users\\util\\Source\\Repos\\ProjetCSharp\\Serveur\\Serveur\\App_Data\\MyDatabase.mdf';Integrated Security=True;");
+        
         }
 
         public SqlConnection getDataSource(){    

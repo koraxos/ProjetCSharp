@@ -11,8 +11,18 @@ namespace Projet_DotNet.Controleur
     public class Controleur_Jeu
     {
         private static JeuHttp jeuHttp= new JeuHttp();
+        private static Controleur_Jeu instance = null;
+        private Controleur_Jeu()
+        {
+        }
 
-        public static void sendJeu(Jeu j)
+        public static Controleur_Jeu getInstance()
+        {
+            if (instance == null)
+                instance = new Controleur_Jeu();
+            return instance;
+        }
+        public void sendJeu(Jeu j)
         {
             int validation;//si validation ==1 alors tout s'est bien passé
             validation=jeuHttp.sendJeu(j);

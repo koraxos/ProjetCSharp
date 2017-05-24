@@ -6,31 +6,38 @@ using System.Text;
 using System.Threading.Tasks;
 using Projet_DotNet.Request;
 using Projet_DotNet.Modele;
-namespace Projet_DotNet.Controleur_Connexion
+namespace Projet_DotNet.Controleur
 {
-    public static class ControleurConnexion
+    public class ControleurConnexion
     {
 
         public static LoggerHttp logger=new LoggerHttp();
         private static JeuHttp jeuHttp = new JeuHttp();
-
-        public ControleurConnexion(){
-
+        private static ControleurConnexion instance = null;
+        private ControleurConnexion(){
         }
+
+        public static ControleurConnexion getInstance()
+        {
+            if (instance == null)
+                instance = new ControleurConnexion();
+            return instance;
+        }
+
         // Retourne l'eleve de la BDD si les logs sont corrects, null sinon
-        public static int estValide(String nom, String prenom)
+        public int estValide(String nom, String prenom)
         {
             return logger.logRequest(nom,prenom);
         }
 
-        public static Eleve getEleve(int id, string nom, string prenom)
+        public Eleve getEleve(int id, string nom, string prenom)
         {
             int profil = 0, difficulte = 0, nb_test = 0;
             logger.getprofilRequest(id, profil, nb_test);
             return new Eleve(nom, prenom, profil, difficulte, nb_test);
         }
         // Ajoute le Jeu J à la BDD, retourne true si l'opération a réussi, false sinon
-        public static bool envoie_test(Jeu j)
+        public bool envoie_test(Jeu j)
         {
             int validation;//si validation ==1 alors tout s'est bien passé
             validation = jeuHttp.sendJeu(j);
@@ -39,7 +46,7 @@ namespace Projet_DotNet.Controleur_Connexion
         }
 
         //Mets à jour l'eleve dans la BDD, retourne vrai ou faux comme d'hab
-        static bool MAJEleve(Eleve nom)
+        public bool MAJEleve(Eleve e)
         {
             return true;
         }
