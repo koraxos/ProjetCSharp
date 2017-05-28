@@ -14,12 +14,41 @@ namespace Projet_DotNet.Request
     class JeuHttp
     {
         Operation[] operations=new Operation[20];
+
         Eleve eleve;
         public JeuHttp() { }
 
+        public bool majEleve(int id_eleve,int profil,int difficulte,int nb_test)
+        {
+            bool answer = false;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:46652/Game.svc/Maj?id="
+                + id_eleve.ToString()+"&?profil="+profil.ToString()+"&?difficulte="+difficulte.ToString()+"&?nb_test="+nb_test.ToString());
+
+            request.ContentType = "text/xml;charset=utf-8";
+            request.ContentLength = 0;
+            request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+            request.Credentials = CredentialCache.DefaultNetworkCredentials;
+            request.Method = WebRequestMethods.Http.Get;
+            try
+            {
+                WebResponse serviceRes = request.GetResponse();
+                Stream stream = serviceRes.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+                answer = true;
+            }
+            catch (WebException webEx)
+            {
+                answer = false;
+                WebResponse errResp = webEx.Response;
+                Stream resp = errResp.GetResponseStream();
+                StreamReader reader = new StreamReader(resp);
+                System.Console.WriteLine(reader.ReadToEnd());
+            }
+            return answer;
+        }
 
         public int sendJeu(Jeu j){
-
+            
             operations = j.getOperations();
             eleve = j.getEleve();
 
@@ -29,6 +58,7 @@ namespace Projet_DotNet.Request
             doc.InsertBefore(xmlDeclaration, root);
 
             XmlElement eleve_node = doc.CreateElement(string.Empty, "eleve", string.Empty);
+
             XmlElement nom = doc.CreateElement(string.Empty, "nom", string.Empty);
             XmlText nom_text = doc.CreateTextNode(eleve.getNom());
             nom.AppendChild(nom_text);
@@ -37,8 +67,14 @@ namespace Projet_DotNet.Request
             XmlText prenom_text = doc.CreateTextNode(eleve.getPrenom());
             prenom.AppendChild(prenom_text);
 
+
+            XmlElement profil = doc.CreateElement(string.Empty, "profil", string.Empty);
+            XmlText profil_text = doc.CreateTextNode(eleve.getProfil().ToString());
+            profil.AppendChild(profil_text);
+
             eleve_node.AppendChild(nom);
             eleve_node.AppendChild(prenom);
+            eleve_node.AppendChild(profil);
 
             doc.AppendChild(eleve_node);
 
@@ -56,7 +92,7 @@ namespace Projet_DotNet.Request
                 operande2.AppendChild(operande2_text);
                 
                 XmlElement resultat = doc.CreateElement(string.Empty, "resultat", string.Empty);
-                XmlText resultat_text = doc.CreateTextNode(operations[i].getResultat().ToString());   
+                XmlText resultat_text = doc.CreateTextNode(j.getReponse(i).ToString());   
                 resultat.AppendChild(resultat_text);
 
                 operation.AppendChild(operande1);
@@ -69,7 +105,7 @@ namespace Projet_DotNet.Request
 
             eleve_node.AppendChild(operations_node);
             string test=doc.InnerXml;
-            Console.WriteLine(doc.InnerXml);
+           
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:46652/Game.svc/?jeu="+test.ToString());
             request.ContentType = "text/xml;charset=utf-8";
             request.ContentLength = 0;

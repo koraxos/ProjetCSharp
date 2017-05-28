@@ -14,14 +14,20 @@ namespace ProjetCsharp
     [ServiceContract]
     public interface IParent
     {
+
         [OperationContract]
-        [WebGet(UriTemplate = "/add?nom={nom}&?prenom={prenom}", ResponseFormat = WebMessageFormat.Xml)]
-        XmlElement addParent(string nom, string prenom);
+        [WebGet(UriTemplate = "/Enfants?nom={nom}&?prenom={prenom}&?mdp={mdp}")]
+        XmlDocument getEnfants(string nom, string prenom, string mdp);
+        
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/add?nom={nom}&?prenom={prenom}&?mdp={mdp}", ResponseFormat = WebMessageFormat.Xml)]
+        int addParent(string nom, string prenom, string mdp);
 
 
         [OperationContract]
-        [WebGet(UriTemplate = "/log?nom={nom}&?prenom={prenom}", ResponseFormat = WebMessageFormat.Xml)]
-        string logParent(string nom, string prenom);
+        [WebGet(UriTemplate = "/log?nom={nom}&?prenom={prenom}&?mdp={mdp}", ResponseFormat = WebMessageFormat.Xml)]
+        int logParent(string nom, string prenom,string mdp);
 
 
         [OperationContract]
@@ -29,8 +35,8 @@ namespace ProjetCsharp
         XmlElement getTest(string nom, string prenom);
 
         [OperationContract]
-        [WebGet(UriTemplate = "/addEnfant?parent={parent}&?nom={nom}&?prenom={prenom}", ResponseFormat = WebMessageFormat.Xml)]
-        string addEnfant(string parent,string nom, string prenom);
+        [WebGet(UriTemplate = "/addEnfant?mdp={mdp}&?parent={parent}&?nom={nom}&?prenom={prenom}&?profil={profil}&?difficulte={difficulte}", ResponseFormat = WebMessageFormat.Xml)]
+        string addEnfant(string mdp,string parent,string nom, string prenom,string profil,string difficulte);
 
     }
 }

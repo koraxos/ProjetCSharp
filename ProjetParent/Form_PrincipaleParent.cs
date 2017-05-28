@@ -13,23 +13,18 @@ namespace ProjetParent
     public partial class Form_PrincipaleParent : Form
     {
         Parent p;
-        ControleConnexion cc;
+        ControleConnexion cc= new ControleConnexion();
+
         public Form_PrincipaleParent(Parent p)
         {
             InitializeComponent();
-            messageBienvenue.Text = "Bienvenue "+p.Nom;
+            this.p = p;
+            messageBienvenue.Text = "Bienvenue "+p.Nom + " " + p.Prenom;
           
             remplissageDataGrid();
 
         }
-        public Form_PrincipaleParent(String nom)
-        {
-            InitializeComponent();
-            messageBienvenue.Text = "Bienvenue " + nom;
 
-            remplissageDataGrid();
-
-        }
         private void messageBienvenue_Click(object sender, EventArgs e)
         {
 
@@ -57,7 +52,7 @@ namespace ProjetParent
             // pour que le parent puisse voir la liste des enfants qu'il a inscrit
             // mais aussi pour pouvoir consulter les résultats des enfants.
 
-            //Eleve[] elv = cc.affichageEnfant(p);
+            Eleve[] elv = cc.affichageEnfant(p);
             //int tailleBaseEleve = elv.Count();
             //for(int i=0; i<tailleBaseEleve; i++)
             //  {

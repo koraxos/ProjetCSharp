@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ProjetCsharp.Historique" CodeBehind="Historique.svc.cs" %>

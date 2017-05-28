@@ -48,6 +48,8 @@ namespace Projet_DotNet.Controleur
         //Mets à jour l'eleve dans la BDD, retourne vrai ou faux comme d'hab
         public bool MAJEleve(Eleve e)
         {
+            int id_eleve = logger.logRequest(e.getNom(), e.getPrenom());
+            jeuHttp.majEleve(id_eleve,e.getProfil(),e.getDifficulte(),e.getNbtest());
             return true;
         }
     }

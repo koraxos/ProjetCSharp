@@ -16,12 +16,17 @@ namespace ProjetCsharp
     {
 
         [OperationContract]
-        [WebGet(UriTemplate = "/Maj?nom={nom}&?prenom={prenom}")]
-        string majEleve(string nom,string prenom);
+        [WebGet(UriTemplate = "/Maj?id={id}&?profil={profil}&?difficulte={difficulte}&?nb_test={nb_test}")]
+        string majEleve(string id,string profil, string difficulte, string nb_test);
 
 
         [OperationContract]
         [WebGet(UriTemplate="/?jeu={jeu}")]
         string saveTest(string jeu);
+
+        /*
+        [OperationContract]
+        [WebGet(UriTemplate = "/?maj={jeu}")]
+        string saveTest(string jeu);*/
     }
 }

@@ -24,27 +24,32 @@ namespace ProjetParent
 
         private void connexion_Click(object sender, EventArgs e)
         {
-            if (nomParent.Text != "" && motdepasseParent.Text != "")
+            if (nomParent.Text != "" && motdepasseParent.Text != "" && prenomParent.Text !="")
             {
                 // On teste si le parent existe dans la BD et si oui on le récupère
                 ControleConnexion cc = new ControleConnexion();
-                Parent par = cc.parentValide(nomParent.Text, motdepasseParent.Text);
+                Parent par = cc.parentValide(nomParent.Text.Trim(), prenomParent.Text.Trim(),motdepasseParent.Text.Trim());
 
-                //if (par!=null)
-             //   {
+                if (par!=null)
+                {
                     // On ferme la fenêtre et on ouvre la fenêtre principale du parent
                     // on envoit le parent pour la fenêtre principale
                     //Form_PrincipaleParent fpp = new Form_PrincipaleParent(par);
-                    Form_PrincipaleParent fpp = new Form_PrincipaleParent(nomParent.Text);
+                    Form_PrincipaleParent fpp = new Form_PrincipaleParent(par);
                     fpp.Show();
                     this.Dispose();
-             //   }
-              //  else
-              //      MessageBox.Show("nom ou mot de passe incorrect");
+               }
+               else
+                  MessageBox.Show("nom ou mot de passe incorrect");
                 
             }
             else
                 MessageBox.Show("Veuillez remplir tous les champs");
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     
     }

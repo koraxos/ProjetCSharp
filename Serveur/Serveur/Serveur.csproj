@@ -65,6 +65,7 @@
       <DependentUpon>MyDatabase.mdf</DependentUpon>
     </Content>
     <Content Include="Game.svc" />
+    <Content Include="Historique.svc" />
     <Content Include="Logger.svc" />
     <Content Include="Parent.svc" />
     <Content Include="Service1.svc" />
@@ -77,7 +78,11 @@
     <Compile Include="Game.svc.cs">
       <DependentUpon>Game.svc</DependentUpon>
     </Compile>
+    <Compile Include="Historique.svc.cs">
+      <DependentUpon>Historique.svc</DependentUpon>
+    </Compile>
     <Compile Include="IGame.cs" />
+    <Compile Include="IHistorique.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="IParent.cs" />
     <Compile Include="Logger.svc.cs">

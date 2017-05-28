@@ -40,26 +40,45 @@ namespace ProjetCsharp
 
 
         private string MAJ = "Select Count(*)"+
-"from Hist_Detail as Det ,Enfant_Hist_Detail as EnfDet, Enfant as Enf"+
-"where Det.id_hist_detail=EnfDet.id_hist"+
-"and ENf.id_enfant=EnfDet.id_enfant and Enf.nom=@nom and Enf.prenom=@prenom";
+" from Hist_Detail as Det ,Enfant_Hist_Detail as EnfDet, Enfant as Enf"+
+" where Det.id_hist_detail=EnfDet.id_hist"+
+" and ENf.id_enfant=EnfDet.id_enfant and Enf.nom=@nom and Enf.prenom=@prenom";
 
-        public string majEleve(string nom,string prenom)
+        private string getIdHist = "Select Gen.id_hist_generale" +
+" from  Enfant_Hist_generale as EnfGen, Hist_generale as Gen" +
+" where EnfGen.id_enfant=@id and EnfGen.id_hist_generale=Gen.id_hist_generale";
+
+        private string updateHistGen="UPDATE Hist_generale"+
+" set difficulte =@difficulte, niveau=@profil,score=@nb_test"+
+" where id_hist_generale=@id";
+        public string majEleve(string id,string profil,string difficulte,string nb_test)
         {   
-            SqlCommand cmd = new SqlCommand(MAJ);
-            int result;
-
             datasource.openDataSource();
 
-            SqlParameter nomParam = cmd.Parameters.Add("@nom", SqlDbType.NVarChar, nom.Length);
-            SqlParameter prenomParam = cmd.Parameters.Add("@prenom", SqlDbType.NVarChar, prenom.Length);
-            //on va chercher le niveau de l'enfant
+            SqlCommand cmd = new SqlCommand(getIdHist);
+            int result;
+            SqlParameter nomParam = cmd.Parameters.Add("@id", SqlDbType.Int);
             cmd.Connection = datasource.getDataSource();
-            cmd.Parameters[0].Value = prenom;
-            cmd.Parameters[1].Value = nom;
+            cmd.Parameters[0].Value = Int32.Parse(id);
             cmd.Prepare();
-            result =(Int32) cmd.ExecuteScalar();
-            return result.ToString();
+            result = (Int32)cmd.ExecuteScalar();
+            
+
+
+            cmd = new SqlCommand(updateHistGen);
+            SqlParameter diffParam = cmd.Parameters.Add("@difficulte", SqlDbType.Int);
+            SqlParameter profilParam = cmd.Parameters.Add("@profil", SqlDbType.Int);
+            SqlParameter nb_testParam = cmd.Parameters.Add("@nb_test", SqlDbType.Int);
+            SqlParameter idparam = cmd.Parameters.Add("@id", SqlDbType.Int);
+            cmd.Parameters[0].Value = Int32.Parse(difficulte);
+            cmd.Parameters[1].Value = Int32.Parse(profil);
+            cmd.Parameters[2].Value = Int32.Parse(nb_test);
+            cmd.Parameters[3].Value = (result);
+            cmd.Connection = datasource.getDataSource();
+            cmd.Prepare();
+            cmd.ExecuteNonQuery();
+            datasource.closeDataSource();
+            return "grosse fete";
         }
 
 
@@ -112,45 +131,26 @@ namespace ProjetCsharp
             doc.LoadXml(document);
             string[] operandes;
             string[] resultats;
-            int id_enfant;
+            int id_enfant,niveau;
             string prenom = null;
             string nom = null;
 
 
             XmlNode prenom_node =doc.SelectSingleNode("/eleve/prenom");
             XmlNode nom_node = doc.SelectSingleNode("/eleve/nom");
+            XmlNode profil_node = doc.SelectSingleNode("/eleve/profil");
 
             prenom = prenom_node.InnerText;
            nom=nom_node.InnerText;
+           niveau = Int32.Parse(profil_node.InnerText);
             // on va chercher l'id de l'enfant
             XmlNode id_node = logger.log(nom,prenom);
            id_enfant=Int32.Parse(id_node.SelectSingleNode("//id").InnerText);
-           
-           SqlCommand cmd = new SqlCommand(getNiveau);
-           SqlDataReader result;
 
-           datasource.openDataSource();
-
-           SqlParameter prenomParam = cmd.Parameters.Add("@prenom", SqlDbType.NVarChar,prenom.Length);
-           SqlParameter nomParam = cmd.Parameters.Add("@nom", SqlDbType.NVarChar,nom.Length);
-            //on va chercher le niveau de l'enfant
-           cmd.Connection = datasource.getDataSource();
-           cmd.Parameters[0].Value = prenom;
-           cmd.Parameters[1].Value = nom;
-           cmd.Prepare();
-           result = cmd.ExecuteReader();
-            int niveau=0;
-
-            if (result.HasRows) { 
-                while(result.Read()){
-                    niveau =Int32.Parse(result.GetString(0));
-                }
-            }
-            result.Close();
             // on extrait les opérandes et les résultats du xml
             operandes = this.extractOperande(doc);
             resultats = this.extractResultat(doc);
-            cmd = new SqlCommand(InsertTest);
+            SqlCommand cmd = new SqlCommand(InsertTest);
             // on paramètre la requète
            SqlParameter niveau_param = cmd.Parameters.Add("@niveau", SqlDbType.Int);
            SqlParameter scoe_param = cmd.Parameters.Add("@score", SqlDbType.Int); 
@@ -181,6 +181,7 @@ namespace ProjetCsharp
                  else
                     cmd.Parameters[i].Value = resultats[i - 22];
             }
+            datasource.openDataSource();
             cmd.Connection = datasource.getDataSource();
             cmd.Prepare();
 
