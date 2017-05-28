@@ -20,7 +20,7 @@ using System.IO;
                                              " FROM ENFANT" +
                                              " WHERE prenom=@prenom AND nom=@nom";
 
-            private string profilCommand = "Select Gen.niveau as lvl,  Gen.score " +
+            private string profilCommand = "Select Gen.niveau as lvl, Gen.score, Gen.difficulte " +
 " from Hist_generale as Gen, Enfant_Hist_generale as EnfGen, Enfant as Enf" +
 " where @id_enf=EnfGen.id_enfant and EnfGen.id_hist_generale=Gen.id_hist_generale";
 
@@ -64,6 +64,7 @@ using System.IO;
                        {
                            temp.Add(result.GetString(0));//lvl
                            temp.Add(result.GetInt32(1).ToString());//score
+                           temp.Add(result.GetInt32(2).ToString());//difficulte
                        }
 
                         string[] _temp = temp.ToArray();
@@ -80,9 +81,13 @@ using System.IO;
                         XmlText score_text = answer.CreateTextNode(_temp[1]);
                         score.AppendChild(score_text);
 
+                        XmlElement diff = answer.CreateElement(string.Empty, "difficulte", string.Empty);
+                        XmlText diff_text = answer.CreateTextNode(_temp[2]);
+                        diff.AppendChild(diff_text);
 
                         profil.AppendChild(lvl);
                         profil.AppendChild(score);
+                        profil.AppendChild(diff);
 
                         return answer.DocumentElement;
                     }

@@ -33,7 +33,11 @@ namespace Projet_DotNet.Controleur
         public Eleve getEleve(int id, string nom, string prenom)
         {
             int profil = 0, difficulte = 0, nb_test = 0;
-            logger.getprofilRequest(id, profil, nb_test);
+            int[] result;
+            result=logger.getprofilRequest(logger.logRequest(nom,prenom));
+            profil=result[0];
+            nb_test = result[1];
+            difficulte = result[2];
             return new Eleve(nom, prenom, profil, difficulte, nb_test);
         }
         // Ajoute le Jeu J à la BDD, retourne true si l'opération a réussi, false sinon

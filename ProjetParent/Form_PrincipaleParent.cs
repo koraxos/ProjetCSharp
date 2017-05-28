@@ -52,7 +52,7 @@ namespace ProjetParent
             // pour que le parent puisse voir la liste des enfants qu'il a inscrit
             // mais aussi pour pouvoir consulter les résultats des enfants.
 
-            Eleve[] elv = cc.affichageEnfant(p);
+            //Eleve[] elv = cc.affichageEnfant(p);
             //int tailleBaseEleve = elv.Count();
             //for(int i=0; i<tailleBaseEleve; i++)
             //  {

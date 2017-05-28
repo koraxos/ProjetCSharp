@@ -19,9 +19,12 @@ namespace ProjetParent
 
         private void quitter_Click(object sender, EventArgs e)
         {
+            
+            
             this.Dispose();
         }
 
+        
         private void connexion_Click(object sender, EventArgs e)
         {
             if (nomParent.Text != "" && motdepasseParent.Text != "" && prenomParent.Text !="")
