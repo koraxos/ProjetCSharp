@@ -21,7 +21,7 @@ namespace ProjetCsharp
         
         private DataSource dataSource = new DataSource();
 
-        private string selectEnfants=" Select  Enf.nom ,Enf.prenom , Gen.niveau, Gen.difficulte,Gen.score" +
+        private string selectEnfants=" Select  Enf.id_enfant ,Enf.prenom , Gen.niveau, Gen.difficulte,Gen.score" +
         " from Enfant as Enf, Enfant_Hist_generale as EnfGen, Hist_generale as Gen, " +
         " Parent as Par, " +
         " Parent_Enfant as ParEnf" +
@@ -31,6 +31,17 @@ namespace ProjetCsharp
         " and Enf.id_enfant=EnfGen.id_enfant" +
         " and EnfGen.id_hist_generale=Gen.id_hist_generale" ;
 
+/*
+        private string selectEnfants = " Select  Enf.id ,Enf.prenom , Gen.niveau, Gen.difficulte,Gen.score" +
+        " from Enfant as Enf, Enfant_Hist_generale as EnfGen, Hist_generale as Gen, " +
+        " Parent as Par, " +
+        " Parent_Enfant as ParEnf" +
+        " WHERE Par.id_parent=@id" +
+        " and " +
+        " ParEnf.id_enfant=Enf.id_enfant " +
+        " and Enf.id_enfant=EnfGen.id_enfant" +
+        " and EnfGen.id_hist_generale=Gen.id_hist_generale";
+        */
         private string checkParentExist = " Select Parent.id_parent" +
                                         " from Parent" +
                                         " where Parent.Nom=@identifiant and Parent.mdp=@mdp";
@@ -73,13 +84,13 @@ namespace ProjetCsharp
             if (result.HasRows)
             {
                 int i = 0;
-               /* while (result.Read())
+                while (result.Read())
                 {
                     XmlElement eleve_node = doc.CreateElement(string.Empty, "eleve" + i.ToString(), string.Empty);
-                    XmlElement nom_xml = doc.CreateElement(string.Empty, "nom", string.Empty);
-                    XmlText nom_text = doc.CreateTextNode(result.GetString(0));
+                    XmlElement nom_xml = doc.CreateElement(string.Empty, "id", string.Empty);
+                    XmlText nom_text = doc.CreateTextNode(result.GetInt32(0).ToString());
                     nom_xml.AppendChild(nom_text);
-
+                    /*
                     XmlElement prenom_xml = doc.CreateElement(string.Empty, "prenom", string.Empty);
                     XmlText prenom_text = doc.CreateTextNode(result.GetString(1));
                     prenom_xml.AppendChild(prenom_text);
@@ -94,16 +105,16 @@ namespace ProjetCsharp
 
                     XmlElement nb_test_xml = doc.CreateElement(string.Empty, "difficulte", string.Empty);
                     XmlText nb_test_text = doc.CreateTextNode(result.GetInt32(4).ToString());
-                    nb_test_xml.AppendChild(nb_test_text);
+                    nb_test_xml.AppendChild(nb_test_text);*/
 
-                    eleve_node.AppendChild(nom_xml);
+                   /* eleve_node.AppendChild(nom_xml);
                     eleve_node.AppendChild(prenom_xml);
                     eleve_node.AppendChild(profil_xml);
                     eleve_node.AppendChild(diff_xml);
-                    eleve_node.AppendChild(nb_test_xml);
+                    eleve_node.AppendChild(nb_test_xml);*/
                     eleves.AppendChild(eleve_node);
                     i++;
-                }*/
+                }
             }
 
             dataSource.closeDataSource();

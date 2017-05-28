@@ -39,20 +39,22 @@ namespace ProjetParent.Request
         }
 
         public Eleve[] getElevesParent(Parent P){
-            ExtendedWebClient HttpRequest = new ExtendedWebClient();
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:46652/Parent.svc/Enfants?nom=" + P.Nom + "&?prenom=" + P.Prenom + "&?mdp=" + P.Motdepasse);
-                System.Console.WriteLine(HttpRequest.ToString());
+               // request.InitializeLifetimeService= new LifeTi;
+             //   request.Connection="http://localhost:46652/Parent.svc/Enfants?nom=" + P.Nom + "&?prenom=" + P.Prenom + "&?mdp=" + P.Motdepasse;
+                    
+                 // (HttpWebRequest)WebRequest.Create("http://localhost:46652/Parent.svc/Enfants?nom=" + P.Nom + "&?prenom=" + P.Prenom + "&?mdp=" + P.Motdepasse);
+                
+                
                 request.ContentType = "text/plain;charset=utf-8";
                 request.ContentLength = 0;
                 request.Accept = "text/html,application/xhtml+xml,application/xml;";
                 request.Credentials = CredentialCache.DefaultNetworkCredentials;
                 request.Method = WebRequestMethods.Http.Get;
-                request.KeepAlive = true;
-                request.MaximumResponseHeadersLength=200000000;
+                request.KeepAlive = false;
              request.Timeout = 100000000;
-             request.MaximumResponseHeadersLength = 5000000;
              System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
                 request.ReadWriteTimeout = 100000000;
                 ServicePointManager.Expect100Continue = false;
@@ -66,6 +68,7 @@ namespace ProjetParent.Request
             }
             catch (WebException webEx)
             {
+                return this.getElevesParent(P);
                 WebResponse errResp = webEx.Response;
                 Stream resp = errResp.GetResponseStream();
                 StreamReader reader = new StreamReader(resp);
